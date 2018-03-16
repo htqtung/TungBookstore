@@ -14,7 +14,19 @@
 	
 	<body>
 		<div class="container-fluid">
-			<h1>Book List</h1>
+			<div class="row">
+				<div class="col-md-4">
+					<h1>Book List</h1>
+				</div>
+				<div class="col-md-4">
+					<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+				</div>
+				<div class="col-md-4" style="padding:20px 0">
+					<form th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out" class="btn btn-danger"/>
+					</form>
+				</div>
+			</div>
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -23,7 +35,7 @@
 						<th>Category</th>
 						<th>ISBN</th>
 						<th>Year</th>
-						<th></th>
+						<th sec:authorize="hasRole('ADMIN')"></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -35,8 +47,8 @@
 						<td th:text="${book.isbn}"></td>
 						<td th:text="${book.year}"></td>
 						<!-- Use hasAuthority instead of hasRole when working with User from database -->
-						<td sec:autorize="hasRole('ADMIN')">
-							<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm">
+						<td sec:authorize="hasRole('ADMIN')">
+							<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">
 								Delete
 							</a>
 						</td>
@@ -45,9 +57,6 @@
 				</tbody>
 			</table>
 			<a href="/add" class="btn btn-success">Add Book</a>
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Sign Out" />
-			</form>
 		</div>
 	</body>
 </html>

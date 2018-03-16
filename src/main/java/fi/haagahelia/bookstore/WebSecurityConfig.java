@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.formLogin()
 				.loginPage("/login")
-				.defaultSuccessUrl("/bookList")
+				.defaultSuccessUrl("/booklist")
 				.permitAll()
 				.and()
 			.logout()
@@ -28,12 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-			.inMemoryAuthentication()
-				.withUser("user").password("password").roles("USER");
-		auth
-			.inMemoryAuthentication()
-				.withUser("admin").password("password").roles("ADMIN");
-	}
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+            .inMemoryAuthentication()
+                .withUser("user").password("password").roles("USER").and()
+                .withUser("admin").password("password").roles("USER", "ADMIN");
+    }
 }

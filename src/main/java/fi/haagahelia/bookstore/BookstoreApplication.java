@@ -19,14 +19,6 @@ public class BookstoreApplication {
 	
 	@Bean
 	public CommandLineRunner demo(BookRepository repository, CategoryRepository crepository) {
-//		return (args) -> {
-//			Category c1 = new Category("Programming");
-//			crepository.save(c1);
-//			Book b1 = new Book("Server Programming", "Juha Hinkula", 2018, "12345678912", 199.9, c1);
-//			Book b2 = new Book("Mobile Programming", "Juha Hinkula", 2018, "12345678913", 299.9, c1);
-//			repository.save(b1);
-//			repository.save(b2);
-//		};
 		return (args) -> {
 			Category c1 = new Category("Back-End");
 			Category c2 = new Category("Mobile");

@@ -16,6 +16,9 @@
 			<div th:if="${param.error}">
 				<p>Invalid username and password.</p>
 			</div>
+			<div th:if="${param.logout}">
+				You have been logged out.
+			</div>
 			<form class="form" th:action="@{/login}" method="post">
 				<div>
 					<label> User Name : </label>
@@ -26,7 +29,8 @@
 					<input type="password" name="password" class="form-control" /> 
 				</div>
 				<div>
-					<input type="submit" value="Sign In"/>
+					<br/>
+					<input type="submit" value="Sign In" class="btn btn-primary"/>
 				</div>
 			</form>
 		</div>
