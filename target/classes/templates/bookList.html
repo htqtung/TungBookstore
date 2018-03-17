@@ -14,21 +14,21 @@
 	
 	<body>
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-4">
+			<div class="row align-items-center">
+				<div class="col-md-5">
 					<h1>Book List</h1>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 				</div>
-				<div class="col-md-4" style="padding:20px 0">
+				<div class="col-md-1" style="padding:20px 0">
 					<form th:action="@{/logout}" method="post">
-						<input type="submit" value="Sign Out" class="btn btn-danger"/>
+						<input type="submit" value="Sign Out" class="btn btn-outline-secondary btn-sm"/>
 					</form>
 				</div>
 			</div>
-			<table class="table table-striped">
-				<thead>
+			<table class="table">
+				<thead class="thead-dark">
 					<tr>
 						<th>Author</th>
 						<th>Title</th>
@@ -48,7 +48,7 @@
 						<td th:text="${book.year}"></td>
 						<!-- Use hasAuthority instead of hasRole when working with User from database -->
 						<td sec:authorize="hasRole('ADMIN')">
-							<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">
+							<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm">
 								Delete
 							</a>
 						</td>
