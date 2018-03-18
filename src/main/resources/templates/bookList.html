@@ -15,13 +15,13 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row align-items-center">
-				<div class="col-md-5">
+				<div class="col-sm-5">
 					<h1>Book List</h1>
 				</div>
-				<div class="col-md-6">
-					<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+				<div class="col-sm-5">
+					<h3 th:inline="text">Welcome, [[${#httpServletRequest.remoteUser}]]</h3>
 				</div>
-				<div class="col-md-1" style="padding:20px 0">
+				<div class="col-sm-2" style="padding:20px 0">
 					<form th:action="@{/logout}" method="post">
 						<input type="submit" value="Sign Out" class="btn btn-outline-secondary btn-sm"/>
 					</form>
@@ -35,7 +35,7 @@
 						<th>Category</th>
 						<th>ISBN</th>
 						<th>Year</th>
-						<th sec:authorize="hasRole('ADMIN')"></th>
+						<th sec:authorize="hasAuthority('ADMIN')"></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -47,7 +47,7 @@
 						<td th:text="${book.isbn}"></td>
 						<td th:text="${book.year}"></td>
 						<!-- Use hasAuthority instead of hasRole when working with User from database -->
-						<td sec:authorize="hasRole('ADMIN')">
+						<td sec:authorize="hasAuthority('ADMIN')">
 							<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm">
 								Delete
 							</a>

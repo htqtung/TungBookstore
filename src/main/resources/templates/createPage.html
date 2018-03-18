@@ -15,6 +15,9 @@
 	<body>
 		<div class="container-fluid">
 			<h1>Add book</h1>
+			<div th:if="${param.error}">
+				<p>The ISBN number you provided has already existed in the database. </p>
+			</div>
 			<div>
 				<form class="form" th:object="${book}" th:action="@{save}" action="#" method="post">
 				  	<label for="author">Author</label>
@@ -43,7 +46,8 @@
 					<label for="price">Price</label>
 					<input type= "text" th:field="*{price}" class="form-control" />
 					<div style="clear: both; display: block; height: 10px;"></div>
-					<input type="submit" value="Save"></input>
+					<input type="submit" value="Save" class="btn btn-success btn-block"></input>
+					<a href="/booklist" class="btn btn-secondary btn-block">Cancel</a>
 				</form>
 			</div>
 		</div>

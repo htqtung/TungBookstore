@@ -1,5 +1,6 @@
 package fi.haagahelia.bookstore.java;
 
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Book {
 	private String title;
 	private String author;
 	private int year;
+//	@Column(name = "isbn", nullable = false, unique = true)
 	private String isbn;
 	private double price;
 	
