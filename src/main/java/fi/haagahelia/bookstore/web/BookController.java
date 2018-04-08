@@ -55,6 +55,7 @@ public class BookController {
 	
 	@RequestMapping("/edit/{id}")
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
+		// findOne() and delete() are for 1.5.x version of springboot, ver 2 has different names
 		model.addAttribute("book", repository.findOne(bookId));
 		model.addAttribute("categories", categoryRepository.findAll());
 		return "editPage";
@@ -72,8 +73,8 @@ public class BookController {
 		return (List<Category>) categoryRepository.findAll();
 	}
 	
-	//RESTful service to get student by ID
-	@RequestMapping(value="/book/{id}", method = RequestMethod.GET)
+	//RESTful service to get book by ID
+	@RequestMapping(value="/books/{id}", method = RequestMethod.GET)
 	public @ResponseBody Book findBookRest(@PathVariable("id") Long bookId) {
 		return repository.findOne(bookId);
 	}

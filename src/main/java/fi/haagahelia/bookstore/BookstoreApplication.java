@@ -24,8 +24,10 @@ public class BookstoreApplication {
 		return (args) -> {
 			//Create database users: admin/admin user/user
 			User user1 = new User("user", "$2a$10$wEq4wXEwNxDnZpCxzlkns.wpMjWkHNvc2BsIiwtned6zfb8w6ZpaG", "user@bookstore.com", "USER");
+			User usertest = new User("usertest", "$2a$10$wEq4wXEwNxDnZpCxzlkns.wpMjWkHNvc2BsIiwtned6zfb8w6ZpaG", "usertest@bookstore.com", "USER");
 			User user2 = new User("admin", "$2a$10$Y5tVTbUNog7XiMdNgMKSp.AIFweHlfS/Yu1r4vhS0TlXqy2mn9bG2", "admin@bookstore.com", "ADMIN");
 			urepository.save(user1);
+			urepository.save(usertest);
 			urepository.save(user2);
 			Category c1 = new Category("Back-End");
 			Category c2 = new Category("Mobile");
